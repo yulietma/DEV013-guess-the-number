@@ -1,0 +1,14 @@
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\bin\Debug\net8.0\guess-the-number.exe
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\bin\Debug\net8.0\guess-the-number.deps.json
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\bin\Debug\net8.0\guess-the-number.runtimeconfig.json
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\bin\Debug\net8.0\guess-the-number.dll
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\bin\Debug\net8.0\guess-the-number.pdb
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.AssemblyInfoInputs.cache
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.AssemblyInfo.cs
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.csproj.CoreCompileInputs.cache
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.dll
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\refint\guess-the-number.dll
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.pdb
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.genruntimeconfig.cache
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\ref\guess-the-number.dll
