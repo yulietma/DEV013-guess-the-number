@@ -12,3 +12,4 @@ C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\
 C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.pdb
 C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.genruntimeconfig.cache
 C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\ref\guess-the-number.dll
+C:\Users\Mora\OneDrive\Escritorio\LaborTORIA\Ruta C#\guess-the-number\obj\Debug\net8.0\guess-the-number.sourcelink.json
