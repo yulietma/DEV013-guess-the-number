@@ -1,43 +1,68 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 //defincion de la clase game
-public class Game
-{
-    private int numeroSecreto; //se crea una variable para almacenar el numero secreto esta variable es numero (int)
-//Constructor de la clase game que inicializa el numero secreto
-    private Palyer player; //Propiedad para almacenar una instancia Player
-    
-    // Constructor que inicializa su numero aleatorio y crea un nuevo objeto de tipo player
-    public Game (string playerName)
-    {    
-        Random rnd =new Random();//creacion de una instancia d ela clase Random para generar un numero a lazar 
-        numeroSecreto=rnd.Next(1,101);//genra el numero alzar entre 1 y 100 y s elo asignamos a numeroSecreto
-        player = new Palyer(playerName);
-    
+public class Game{
+    public int secretNumber{get; set;}
+    private Random _random= new Random();
+    private Player _humanPlayer{get; set;}
+    private Player _AIPlayer{get; set;}
+
+    // Método para generar un número aleatorio entre 1 y 100
+    private int RandomNumberGenerator( ){
+       return _random.Next(1,100);
     }
 
-    // metodo que inicia el juego 
-    public void IniciarJuego()
-    {  //Console.WriteLine me ayuda a mostara lineas de texto en la terminal
-        Console.WriteLine("Bienvenid@, {Name} a Guess the Number!!");
-        Console.WriteLine("Intenta adivinar el numero entre 1 y 100");
-    
-        do // empezamos el bucle de do-while que solicita al usuario adivinar el numero
-        {
-            player.MakeGuess();
-            if (player.ultimoIntento== numeroSecreto)// si el numero secreto es igual a intento (usuario)
-            {
-                Console.WriteLine("Adivinaste!!! felicidades, {Name}");
-                break;
+     // Constructor de la clase Game
+    public Game (string nameplayer){
+       secretNumber= RandomNumberGenerator(); 
+       _humanPlayer= new HumanPlayer(nameplayer);
+       _AIPlayer= new AIPlayer("IA");
+    }
+
+    // Método para comprobar si el número ingresado coincide con el número secreto
+     public bool CheckGuess(int guess,int targetNumber){
+       if (guess==targetNumber){
+            return true;
+       }
+       if (guess<targetNumber){
+            Console.WriteLine("El número que ingresaste es menor ");
+        }else if (guess>targetNumber) {
+            Console.WriteLine("El número que ingresaste es mayor");
+        }
+      return false;
+    }
+
+     // Método para iniciar el juego
+    public  void start_game(){
+        int numberIntent=1;
+        bool finish=false;
+        bool semaforo=true;
+       Console.WriteLine("Bienvenida "+_humanPlayer.nameGame+" adivina el número  pensado...entre 1 y 100");
+        while (!finish){
+            if (semaforo){
+                _humanPlayer.MakeGuess();
+                if (CheckGuess(_humanPlayer.GetLastGuess(),secretNumber)){
+                  finish=true;
+                }
+                semaforo=false;
+            }else{
+                _AIPlayer.MakeGuess();
+                if (CheckGuess(_AIPlayer.GetLastAIGuess(),secretNumber)){
+                   finish=true;
+                }
+                semaforo=true;
             }
-            //si no comprueba si el intento del usuaurio es menor que el numeroSecreto
-            else if (player.ultimoIntento < numeroSecreto)
-            {
-                Console.WriteLine("El numero secreto es mayor");//imprime que es mayor el numero a adivinar
-            }
-            else // si no, imprime que es menor el numeroSecreto
-            {
-                Console.WriteLine("El numero secreto es menor");
-            }
-        } while (true); // el bucle se repite hasta que se adivian el numero a lazar
+          numberIntent++;
+        }
+    }
+
+    //metodo segun el resultado la linea de codigo se ejecutara
+    public void winnerGame(){
+        if (CheckGuess(_humanPlayer.GetLastGuess(),secretNumber)){
+            Console.WriteLine("Felicidades Adivinaste el numero");
+        }else if (CheckGuess(_AIPlayer.GetLastAIGuess(),secretNumber)){
+            Console.WriteLine("Game Over");
+            
+        }
     }
 }

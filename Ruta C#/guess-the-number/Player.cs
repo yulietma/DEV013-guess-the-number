@@ -1,18 +1,32 @@
 //defien la clase
-public class Palyer
+public class Player
 {
     public string Name {get; private set;}// Propiedad para gsuardar el nombre del usuruario 
-    public int ultimoIntento { get; private set;}// Porpiedad para almacenar el ultimo intento
-    public Palyer(string name)
+    private int ultimoIntento;// Porpiedad para almacenar el ultimo intento
+    public Player(string name)
     {
         Name = name;
         ultimoIntento = 0;
     }
-    
+    public int getLastGuess(){
+        return ultimoIntento;
+    }
     public void MakeGuess() //Metodo que se encarga de hacer la prediccion
     {
-        Console.Write($"{Name} Ingresa tu Intento:");
-        ultimoIntento = Convert.ToInt32(Console.ReadLine());// solicita por terminal que el numero se valide y sea correcto 
+        bool isValid=true;
+        while(isValid){
+            Console.Write($"{Name} Ingresa tu Intento: ");
+            string? input=Console.ReadLine();
+            if(int.TryParse(input, out int guess)){
+                ultimoIntento=guess;
+                isValid=false;
+            }
+            else{
+
+            Console.WriteLine("Por favor ingresa un NUMERO valido");
+            }
+        }
+        
     }
 }
 

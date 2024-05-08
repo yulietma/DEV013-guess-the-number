@@ -1,17 +1,14 @@
 ﻿
 using System;
-//Defincion de la clase program
-class Program
-{
-    static void Main(string[] args) //Metodo principal del programa
-    {
+//Defincion de la clase progra
         Console.Write("Ingresa tu nombre: ");
-          string? playerName = Console.ReadLine();
+        string? name = Console.ReadLine();// el ? e ayuda meter
 
-          playerName ??="Invitado";//// Verifica si playerName es nulo y, si lo es, asigna un valor predeterminado
-
-        //se crea una INSTANCIA de la clss Game
-       Game game = new Game(playerName);
-        game.IniciarJuego();//se llama el metodo IniciarJuego que esta dentro de la instancia de la clase game 
-    }
-}
+        if (string.IsNullOrEmpty(name)){//Si el nombre es nulo o vacío
+           Console.WriteLine("Escribe correctamente un nombre");
+        }else{
+          Game Game= new Game(name);//crea una instancia de la clase Game
+          Game.start_game(); 
+          Game.winnerGame(); 
+        }
+      
