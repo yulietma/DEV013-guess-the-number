@@ -1,68 +1,75 @@
-using System;
-using System.Security.Cryptography.X509Certificates;
-//defincion de la clase game
-public class Game{
-    public int secretNumber{get; set;}
-    private Random _random= new Random();
-    private Player _humanPlayer{get; set;}
-    private Player _AIPlayer{get; set;}
+public class Game
+{//declracion de la clase game
+  public int secretNumber { get; set; }//Propiedad publica representa el numero secreto que se debe adivinar
+  private Random _random = new Random();//delcaro un objeto random para generar numerso aleatorios
+  private Player _HumanPlayer { get; set; }//Propiedad privada que representa al jugador Humano 
+  private Player _AIPlayer { get; set; }//propiedad privada que representa a la IA
 
-    // Método para generar un número aleatorio entre 1 y 100
-    private int RandomNumberGenerator( ){
-       return _random.Next(1,100);
+
+  private int RandomNumberGenerator()
+  {//metodo privado que genera un numero aleatorio entre 1 y 100
+    return _random.Next(1, 100);
+  }
+  public Game(string nameplayer)  {//constructor de la clase Game que recibe el nombre del juegador como parametro
+    secretNumber = RandomNumberGenerator();//genera numero aleatorio al iniciar el juego 
+    _HumanPlayer = new HumanPlayer(nameplayer);//Inicializa el juego Humano con el nombre porporcionado 
+    _AIPlayer = new AIPlayer("IA");//Inicializa el juego con un nombre predeterminado ("IA)
+  }
+  public bool CheckGuess(int guess, int targetNumber)
+  {//metodo que verifica si el numero ingresado es igual a numero objetivo
+    if (guess == targetNumber)
+    {
+      return true;//Devuelve verdadero si el numero adivinado es igual al objetivo
     }
-
-     // Constructor de la clase Game
-    public Game (string nameplayer){
-       secretNumber= RandomNumberGenerator(); 
-       _humanPlayer= new HumanPlayer(nameplayer);
-       _AIPlayer= new AIPlayer("IA");
+    if (guess < targetNumber)
+    {
+      Console.WriteLine("El numero que ingresaste ee menor al numero por adivinar");//imprime mensaje si el numero es menor al que se debe adivinar 
     }
+    else if (guess > targetNumber)
+    {
+      Console.WriteLine("El numero que ingresaste es mayor al numero por adivinar");
+    }
+    return false;//devuelve falso si el numero adivinado no es igual al objetivo 
+  }
 
-    // Método para comprobar si el número ingresado coincide con el número secreto
-     public bool CheckGuess(int guess,int targetNumber){
-       if (guess==targetNumber){
-            return true;
-       }
-       if (guess<targetNumber){
-            Console.WriteLine("El número que ingresaste es menor ");
-        }else if (guess>targetNumber) {
-            Console.WriteLine("El número que ingresaste es mayor");
+  public void startGame()
+  {//metodo para iniciar el juego
+    int Intento = 1;
+    bool fin = false;
+    bool semaforo = true;
+    Console.WriteLine("Binevenida" + _HumanPlayer.nameGame + "adivina el numero que pienso entre el 1 y el 100 ");
+    // todo lo de arriba imprime mesnaje de bienvenida on el nombre del usuruario 
+    while (!fin)
+    {//empieza el bucle para continuar el juego hasta que finalice 
+      if (semaforo)
+      {
+        //condicion para alternar entre el usuario y la IA
+        _HumanPlayer.MakeGuess();//LLamamos el metodo MakeGuess del jugador humano para hacer conjetura
+        if (CheckGuess(_HumanPlayer.getLastGuess(), secretNumber))
+        {
+          fin = true;//Finaliza el juego si el jugador adivina el numero secreto
         }
-      return false;
-    }
-
-     // Método para iniciar el juego
-    public  void start_game(){
-        int numberIntent=1;
-        bool finish=false;
-        bool semaforo=true;
-       Console.WriteLine("Bienvenida "+_humanPlayer.nameGame+" adivina el número  pensado...entre 1 y 100");
-        while (!finish){
-            if (semaforo){
-                _humanPlayer.MakeGuess();
-                if (CheckGuess(_humanPlayer.GetLastGuess(),secretNumber)){
-                  finish=true;
-                }
-                semaforo=false;
-            }else{
-                _AIPlayer.MakeGuess();
-                if (CheckGuess(_AIPlayer.GetLastAIGuess(),secretNumber)){
-                   finish=true;
-                }
-                semaforo=true;
-            }
-          numberIntent++;
+        semaforo = false;//Cambia el turno para alternar al sig jugador
+      }
+      else
+      {//secion para IA
+        _AIPlayer.MakeGuess();//Llamamos el metodo MakeGuess de la IA para hacer conjenttura
+        if (CheckGuess(_AIPlayer.getLastGuess(), secretNumber))
+        {
+          fin = true;//Finaliza el juego si la IA adivia el numero secreto
         }
+        semaforo = true;//Cambia el turno para laternar al sig. jugador
+      }
+      Intento++;
+      //incrementa el contador de los itentos
     }
+  }
 
-    //metodo segun el resultado la linea de codigo se ejecutara
-    public void winnerGame(){
-        if (CheckGuess(_humanPlayer.GetLastGuess(),secretNumber)){
-            Console.WriteLine("Felicidades Adivinaste el numero");
-        }else if (CheckGuess(_AIPlayer.GetLastAIGuess(),secretNumber)){
-            Console.WriteLine("Game Over");
-            
-        }
+  public void winner(){//metodo para imprimir mensaje si el ganador es humanplayer o IA
+    if (CheckGuess(_HumanPlayer.getLastGuess(), secretNumber)){
+      Console.WriteLine("Felicidades has ganado");//Para el jugador humano
+      } else if (CheckGuess(_AIPlayer.getLastGuess(),secretNumber)){
+        Console.WriteLine("Felicidades IA has gando ");//mensaje para la IA si gana
+      }
     }
-}
+  }

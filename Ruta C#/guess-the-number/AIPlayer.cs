@@ -11,7 +11,7 @@ public class AIPlayer : Player{
     {
         int guessAI= AIGuess();
         AddListAiGuess(guessAI);
-        Console.WriteLine("--Round: Computer Player---");
+        Console.WriteLine("Computer Player");
         Console.WriteLine("Escribe un número:"+guessAI);
     }
 
