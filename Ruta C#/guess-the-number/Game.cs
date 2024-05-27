@@ -37,7 +37,7 @@ public class Game
     int Intento = 1;
     bool fin = false;
     bool semaforo = true;
-    Console.WriteLine("Binevenida" + _HumanPlayer.nameGame + "adivina el numero que pienso entre el 1 y el 100 ");
+    Console.WriteLine("Binevenida"   +  _HumanPlayer.nameGame +    "adivina el numero que pienso entre el 1 y el 100 ");
     // todo lo de arriba imprime mesnaje de bienvenida on el nombre del usuruario 
     while (!fin)
     {//empieza el bucle para continuar el juego hasta que finalice 
